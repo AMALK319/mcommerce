@@ -1,4 +1,4 @@
 FROM java:8
-ADD target/microservice-produits.jar microservice-produits.jar
+ADD target/mproduits.jar mproduits.jar
 EXPOSE 81
-ENTRYPOINT ["java", "-jar", "microservice-produits.jar"]
+ENTRYPOINT ["java", "-jar", "mproduits.jar"]

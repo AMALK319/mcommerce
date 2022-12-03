@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mproduits-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mproduits
+  template:
+    metadata:
+      labels:
+        app: mproduits
+    spec:
+      containers:
+      - name: mproduits
+        image: mcommerce2022.azurecr.io/amalkalim@gmail.com/mproduits:#{Build.BuildId}#
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9001
+# service type loadbalancer       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mproduits
+    k8s-app: mproduits
+  name: mproduits
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 9001
+  type: LoadBalancer
+  selector:
+    app: mproduits

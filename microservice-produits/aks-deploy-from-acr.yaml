@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mproduits
-        image: mcommerce2022.azurecr.io/amalkalim@gmail.com/mproduits:#{Build.BuildId}#
+        image: mcommerce2022.azurecr.io/mproduits:#{Build.BuildId}#
         imagePullPolicy: Always
         ports:
         - containerPort: 9001

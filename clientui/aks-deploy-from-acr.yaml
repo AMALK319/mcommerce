@@ -30,11 +30,12 @@ metadata:
     k8s-app: clientui
   name: clientui
 spec:
+  type: ExternalName
+  externalName: clientui.com
   ports:
   - name: http
     port: 80
     protocol: TCP
     targetPort: 8080
-  type: LoadBalancer
   selector:
     app: clientui

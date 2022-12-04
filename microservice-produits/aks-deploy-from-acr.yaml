@@ -30,8 +30,6 @@ metadata:
     k8s-app: mproduits
   name: mproduits
 spec:
-  type: ExternalName
-  externalName: mproduits
   ports:
   - name: http
     port: 80

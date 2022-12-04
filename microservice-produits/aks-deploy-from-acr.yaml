@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mproduits-deployment
+  namespace: mproduits
 spec:
   replicas: 3
   selector:
@@ -23,16 +24,18 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: mproduits
   labels:
     app: mproduits
     k8s-app: mproduits
   name: mproduits
 spec:
+  type: ExternalName
+  externalName: api.mproduits.com
   ports:
   - name: http
     port: 80
     protocol: TCP
     targetPort: 9001
-  type: LoadBalancer
   selector:
     app: mproduits

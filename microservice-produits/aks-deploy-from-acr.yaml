@@ -30,6 +30,7 @@ metadata:
     k8s-app: mproduits
   name: mproduits
 spec:
+  type: LoadBalancer
   ports:
   - name: http
     port: 80

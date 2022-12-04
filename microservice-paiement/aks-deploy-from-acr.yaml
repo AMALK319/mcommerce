@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mpaiement-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mpaiement
+  template:
+    metadata:
+      labels:
+        app: mpaiement
+    spec:
+      containers:
+      - name: mpaiement
+        image: mcommerce2022.azurecr.io/mpaiement:#{Build.BuildId}#
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9003
+# service type loadbalancer       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mpaiement
+    k8s-app: mpaiement
+  name: mpaiement
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 9003
+  type: LoadBalancer
+  selector:
+    app: mpaiement

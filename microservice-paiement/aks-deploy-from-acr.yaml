@@ -30,11 +30,12 @@ metadata:
     k8s-app: mpaiement
   name: mpaiement
 spec:
+  type: ExternalName
+  externalName: api.mpaiement.com
   ports:
   - name: http
     port: 80
     protocol: TCP
     targetPort: 9003
-  type: LoadBalancer
   selector:
     app: mpaiement

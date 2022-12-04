@@ -4,7 +4,6 @@ metadata:
   name: clientui-deployment
   namespace: clientui
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: clientui

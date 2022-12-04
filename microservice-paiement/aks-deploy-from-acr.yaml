@@ -30,8 +30,6 @@ metadata:
     k8s-app: mpaiement
   name: mpaiement
 spec:
-  type: ExternalName
-  externalName: mpaiement
   ports:
   - name: http
     port: 80

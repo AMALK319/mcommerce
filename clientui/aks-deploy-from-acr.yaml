@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clientui-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: clientui
+  template:
+    metadata:
+      labels:
+        app: clientui
+    spec:
+      containers:
+      - name: clientui
+        image: mcommerce2022.azurecr.io/clientui:#{Build.BuildId}#
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+# service type loadbalancer       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: clientui
+    k8s-app: clientui
+  name: clientui
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  type: LoadBalancer
+  selector:
+    app: clientui

@@ -14,5 +14,7 @@ spec:
         - path: /mproduits(/|$)(.*)
           pathType: Prefix
           backend:
-            serviceName: mproduits
-            servicePort: 80
+            service:
+            name: mproduits
+            port:
+              number: 80

@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: clientui-deployment
+  namespace: clientui
 spec:
   replicas: 3
   selector:
@@ -23,6 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: clientui
   labels:
     app: clientui
     k8s-app: clientui

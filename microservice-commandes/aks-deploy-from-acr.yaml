@@ -30,8 +30,6 @@ metadata:
     k8s-app: mcommandes
   name: mcommandes
 spec:
-  type: ExternalName
-  externalName: mcommandes
   ports:
   - name: http
     port: 80
